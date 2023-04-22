@@ -46,9 +46,8 @@ function start() {
         sdpSemantics: 'unified-plan'
     };
 
-    if (document.getElementById('use-stun').checked) {
-        config.iceServers = [{urls: ['stun:stun.l.google.com:19302']}];
-    }
+    // If you want to enable STUN server by default, uncomment the following line:
+    // config.iceServers = [{urls: ['stun:stun.l.google.com:19302']}];
 
     pc = new RTCPeerConnection(config);
 
@@ -61,16 +60,9 @@ function start() {
         }
     });
 
-    document.getElementById('start').style.display = 'none';
     negotiate();
-    document.getElementById('stop').style.display = 'inline-block';
 }
 
-function stop() {
-    document.getElementById('stop').style.display = 'none';
-
-    // close peer connection
-    setTimeout(function() {
-        pc.close();
-    }, 500);
-}
+// Remove this line to prevent the connection from starting automatically
+// when the page loads
+document.getElementById('start').addEventListener('click', start);
