@@ -63,7 +63,7 @@ function start() {
 
     document.getElementById('start').style.display = 'none';
     negotiate();
-    document.getElementById('stop').style.display = 'inline-block';
+    //document.getElementById('stop').style.display = 'inline-block';
 }
 
 function stop() {
@@ -75,4 +75,10 @@ function stop() {
     }, 500);
 }
 
-window.addEventListener('load', start);
+// Add this function to trigger start() with a 5-second delay when the page loads
+function delayedStart() {
+    setTimeout(start, 5000);
+}
+
+// Replace the previous 'load' event listener with the new delayedStart function
+window.addEventListener('load', delayedStart);
