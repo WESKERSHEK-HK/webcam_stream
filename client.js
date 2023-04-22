@@ -75,3 +75,10 @@ function stop() {
     }, 500);
 }
 
+// Add this function to trigger start() with a 5-second delay when the page loads
+function delayedStart() {
+    setTimeout(start, 5000);
+}
+
+// Replace the previous 'load' event listener with the new delayedStart function
+window.addEventListener('load', delayedStart);
